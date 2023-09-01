@@ -21,7 +21,7 @@ Finally the invoke to the Notification Service must be wrapped with the policy.
                 () => httpClient.GetAsync(apiUrl));
 ```
 
-Insted of this:
+Instead of this:
 ```
     HttpResponseMessage response = await httpClient.PostAsJsonAsync(apiUrl, notification);
 ```
