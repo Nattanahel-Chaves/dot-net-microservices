@@ -10,15 +10,15 @@ The first microservices is the Account Management, and the second one is the Not
 
 Each folder in the repository contains only the code for one of the microservices, in a different stage of development. For instance, the folder 02-Account Service is the first version of the service, while the 09-Account Service is the final version of the same service. Inside each project the README file will gide you about the commands and tasks to be completed.
 
-The most basic microservice in .Net
-Account Management Service with in memory DB.
-Account Management Service using MongoDB.
-Docker-Compose to start MongoDB
-Notification Service with in memory DB.
-Notification Service with PostgreSQL and Entity Framework.
-Docker-Compose to start MongoDB and PostgreSQL
-Account Management Service invoking Notification Service.
-Account Management Service producing and sending messages to RabbitMQ.
-Docker-Compose to start MongoDB, PostgreSQL and RabbitMQ.
-Notification Service consumming messages from RabbitMQ.
+- The most basic microservice in .Net
+- Account Management Service with in memory DB.
+- Account Management Service using MongoDB.
+- Docker-Compose to start MongoDB
+- Notification Service with in memory DB.
+- Notification Service with PostgreSQL and Entity Framework.
+- Docker-Compose to start MongoDB and PostgreSQL
+- Account Management Service invoking Notification Service.
+- Account Management Service producing and sending messages to RabbitMQ.
+- Docker-Compose to start MongoDB, PostgreSQL and RabbitMQ.
+- Notification Service consumming messages from RabbitMQ.
 
