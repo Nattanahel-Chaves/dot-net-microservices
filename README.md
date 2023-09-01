@@ -15,7 +15,7 @@ Each folder in the repository contains only the code for one of the microservice
 - [Account Management Service with in memory DB.](https://github.com/Nattanahel-Chaves/dot-net-microservices/tree/main/02-AccountService/src/BestBank.AccountService#readme)
 - [Account Management Service using MongoDB.](https://github.com/Nattanahel-Chaves/dot-net-microservices/tree/main/03-AccoutService/src/BestBank.AccountService#readme)
 - [Docker-Compose to start MongoDB](https://github.com/Nattanahel-Chaves/dot-net-microservices/blob/main/04-Infrastructure/README.MD)
-- Notification Service with in memory DB.
+- [Notification Service with in memory DB](https://github.com/Nattanahel-Chaves/dot-net-microservices/blob/main/05-NotificationService/src/BestBank.NotificationService/README.MD)
 - Notification Service with PostgreSQL and Entity Framework.
 - Docker-Compose to start MongoDB and PostgreSQL
 - Account Management Service invoking Notification Service.
