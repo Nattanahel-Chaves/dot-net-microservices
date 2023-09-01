@@ -21,5 +21,6 @@ Each folder in the repository contains only the code for one of the microservice
 - [Account Management Service invoking Notification Service.](https://github.com/Nattanahel-Chaves/dot-net-microservices/blob/main/08-AccoutService/src/BestBank.AccountService/README.md)
 - [Account Management Service producing and sending messages to RabbitMQ.](https://github.com/Nattanahel-Chaves/dot-net-microservices/blob/main/09-AccoutService/src/BestBank.AccountService/README.md)
 - [Docker-Compose to start MongoDB, PostgreSQL and RabbitMQ.](https://github.com/Nattanahel-Chaves/dot-net-microservices/blob/main/10-Infrastructure/README.md)
-- Notification Service consumming messages from RabbitMQ.
+- [Notification Service consumming messages from RabbitMQ.](https://github.com/Nattanahel-Chaves/dot-net-microservices/tree/main/11-NotificationService/src/BestBank.NotificationService#readme)
+
 
