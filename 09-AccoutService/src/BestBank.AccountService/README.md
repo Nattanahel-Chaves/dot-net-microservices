@@ -18,3 +18,15 @@ To add a reference to the new project run the following command.
 ```dotnet add reference ..\BestBank.Contracts\BestBank.Contracts.csproj```
 
 **Note**: A better approach is to create a nuget package form the Contracts projects and include this packages in both the Account Management Service and the Notification Service.
+
+Finally the MassTransit must be registered in the ```program.cs``` file.
+
+```
+builder.Services.AddMassTransit( x=>
+{
+    x.UsingRabbitMq((context,configurator) =>
+    {
+        configurator.Host("127.0.0.1");
+    });
+});
+```
