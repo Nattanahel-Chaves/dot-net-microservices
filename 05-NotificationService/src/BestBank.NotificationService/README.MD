@@ -1,25 +1,26 @@
+**Notification Service**
+This first version of the Notification Service do not use a real Database and is created with the *web* template istead the *web-api* template. Thiss will create a default minimal API sample.
+
 **Create the project**
 
-To create the Minimal Web API run the following command
+To create the Minimal Web API run the following command:
 
 ```dotnet new web -n BestBank.NotificationService```
 
 **Add Swagger to the project**
-To add Swagger support  run the following command
 
-```dotnet add package Swashbuckle.AspNetCore --version 6.1.4```
+Once the project is created you can add swagger support, by default the template *web* does not include swagger, to do that you must run the following command:
 
-Add the following code to the program.cs
+```dotnet add package Swashbuckle.AspNetCore```
+
+Besides that, you need to add the following code to the program.cs before the  ```var app = builder.Build();``` line.
 
 ```
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(c =>
-   {
-       c.SwaggerDoc("v1", new OpenApiInfo { Title = "Todo API", Description = "Keep track of your tasks", Version = "v1" });
-   });
+builder.Services.AddSwaggerGen();
 ```
 
-Finally Add the following code to the program.cs
+Finally add the following code to the program.cs after the  ```var app = builder.Build();``` line.
 
 ```
 app.UseSwagger();
