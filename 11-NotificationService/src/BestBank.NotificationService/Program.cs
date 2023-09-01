@@ -1,0 +1,82 @@
+using BestBank.Contracts;
+using BestBank.NotificationService.Consumers;
+using BestBank.NotificationService.dtos;
+using MassTransit;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
+
+
+
+
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddMassTransit( x=>
+{
+    x.AddConsumers(typeof(Program).Assembly);
+    x.UsingRabbitMq((context,configurator) =>
+    {
+        configurator.Host("127.0.0.1");
+        configurator.ConfigureEndpoints(context, new KebabCaseEndpointNameFormatter("AccountService2",false));
+    });
+});
+
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(c =>
+   {
+       c.SwaggerDoc("v1", new OpenApiInfo { Title = "Todo API", Description = "Keep track of your tasks", Version = "v1" });
+   });
+
+
+builder.Services.AddDbContext<NotificationDbContext>(options =>
+    options.UseNpgsql("Server=127.0.0.1;Port=5432;Database=NotificationDB;User Id=postgres;Password=Abc123*;")
+);
+
+
+var app = builder.Build();
+
+app.UseSwagger();
+app.UseSwaggerUI();
+
+app.MapGet("/", async (NotificationDbContext db) => await db.Notifications.ToListAsync());
+
+app.MapGet("/{id}", async (Guid id, NotificationDbContext db) =>
+{
+    return await db.Notifications.FindAsync(id)
+    is Notification notification
+    ? Results.Ok(notification)
+    : Results.NotFound();
+});
+
+app.MapPost("/", async (CreateNotification createNotification, NotificationDbContext db) =>
+{
+    Random random = new Random();
+    var result = random.Next(1, 10);
+    if (result > 4)
+    {
+        Console.WriteLine("Error 500");
+        return Results.StatusCode(StatusCodes.Status500InternalServerError);
+
+    }
+    else
+    {
+        var newnotification = new Notification
+        {
+            Id = Guid.NewGuid(),
+            AccountId = createNotification.AccountId,
+            Message = createNotification.Message,
+            IsCompleted = false,
+            CreatedDate = DateTimeOffset.UtcNow
+        };
+
+
+        await db.Notifications.AddAsync(newnotification);
+        await db.SaveChangesAsync();
+        Console.WriteLine("Ok 200");
+        return Results.Created($"/{newnotification.Id}", newnotification);
+        
+    }
+});
+
+app.Run();
