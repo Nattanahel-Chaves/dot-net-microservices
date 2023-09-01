@@ -10,7 +10,6 @@ The first microservices is the Account Management, and the second one is the Not
 
 Each folder in the repository contains only the code for one of the microservices, in a different stage of development. For instance, the folder 02-Account Service is the first version of the service, while the 09-Account Service is the final version of the same service. Inside each project the README file will gide you about the commands and tasks to be completed.
 
-https://web.whatsapp.com/
 
 - [The most basic microservice in .Net](https://github.com/Nattanahel-Chaves/dot-net-microservices/tree/main/01-Basic/src/01-basic#readme) 
 - Account Management Service with in memory DB.
