@@ -13,10 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(c =>
-   {
-       c.SwaggerDoc("v1", new OpenApiInfo { Title = "Todo API", Description = "Keep track of your tasks", Version = "v1" });
-   });
+builder.Services.AddSwaggerGen();
 
 
 builder.Services.AddDbContext<NotificationDbContext>(options =>
