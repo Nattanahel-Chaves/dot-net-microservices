@@ -1,5 +1,4 @@
 using BestBank.Contracts;
-using BestBank.NotificationService.Consumers;
 using BestBank.NotificationService.dtos;
 using MassTransit;
 using Microsoft.EntityFrameworkCore;
@@ -23,10 +22,7 @@ builder.Services.AddMassTransit( x=>
 
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(c =>
-   {
-       c.SwaggerDoc("v1", new OpenApiInfo { Title = "Todo API", Description = "Keep track of your tasks", Version = "v1" });
-   });
+builder.Services.AddSwaggerGen();
 
 
 builder.Services.AddDbContext<NotificationDbContext>(options =>
