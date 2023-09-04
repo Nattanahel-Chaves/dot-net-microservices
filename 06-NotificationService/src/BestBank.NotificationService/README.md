@@ -1,6 +1,6 @@
 **Add DB Support**
 
-This version of the Notification Services works with PostgreSQL, to use that the project import dependencies for EntityFramework and allow the migration process.
+This version of the Notification Services works with PostgreSQL, to use that the project import dependencies for Entity Framework and allow the migration process.
 
 **Add Entity Framework for PostgreSQL**
 Use the following command
@@ -22,7 +22,7 @@ builder.Services.AddDbContext<NotificationDbContext>(options =>
 
 **How to create the DB in PostgreSQL based on the Model**
 
-The Notification Service uses the CodeFirst approach, so to create the DB in PostgreSQL use the following code in the folder where the csproj file is located. Before that all the files in the Models subfolder must be created, for this project is only the Notification.cs file.
+The Notification Service uses the Code First approach, so to create the DB in PostgreSQL uses the following code in the folder where the csproj file is located. Before that all the files in the Models subfolder must be created, for this project is only the Notification.cs file.
 
 **Run the docker container with PostgreSQL**
 
@@ -46,7 +46,7 @@ Then run the following command to create the migration files.
 dotnet ef migrations add firstmigration --project BestBank.NotificationService.csproj
 ```
 
-Finally run the following command to create the DB
+Finally, run the following command to create the DB
 
 ```
 dotnet ef database update firstmigration --project BestBank.NotificationService.csproj
