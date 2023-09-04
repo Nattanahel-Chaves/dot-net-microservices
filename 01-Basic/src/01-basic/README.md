@@ -1,12 +1,12 @@
 **Most simple microservice with .net**
 
-A microservice .Net is just a web project with API's. The simplest way to create a Web API in .Net 6 is running the following command:
+A .Net microservice is just a web project with API's. The simplest way to create a Web API in .Net 6 is running the following command:
 
 ``` dotnet new webapi -n myprojectname ```
 
-This templace will create a project that includes one controller and enabled swagger by default. The controller is located in the Controllers folder with th nameIn the ```WeatherForecastController.cs``` the template includes a class named ```WeatherForecast``` that has the definition of the object returned by the Web API everytime the service receives a GET request. In the ```WeatherForecastController.cs```. file there is the logic to generate random values each time the WEB receives a request.
+This template will create a project that includes one controller and enabled swagger by default. The controller is located in the Controllers folder with the name ```WeatherForecastController.cs``` the template includes a class named ```WeatherForecast``` that has the definition of the object returned by the Web API every time the service receives a GET request. In the ```WeatherForecastController.cs``` file there is the logic to generate random values each time the WEB receives a request.
 
-To run the project use the following command inside the folder wwhere the csproj file is located.
+To run the project run the following command inside the folder where the csproj file is located.
 
 ```dotnet run``` 
 
