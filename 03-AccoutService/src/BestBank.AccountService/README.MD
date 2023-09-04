@@ -1,22 +1,22 @@
-This version of the Account Services uses MongoDB as Database and validate some fields as follow.
+This version of the Account Services uses MongoDB as Database and validates some fields as follow.
 
 **To validate inputs**
-In the *CreateAccount* and *UpdateAccount* public records  update the *FirsName* and *LastaName* fields with the Attribute:
+In the *CreateAccount* and *UpdateAccount* public records, update the *FirsName* and *LastaName* fields with the Attribute:
 
 ```[Required]```
 
-And the Balance field with ```[Range]``` set the values you want to allow for that field.
+In the Balance field use ```[Range]```, and set the values you want to allow for that field.
 
 For example:
 
 ```public record UpdateAccount ([Required]string    FirstName, [Required]string LastName, [Range(0,500)]decimal Amount);```
 
 **To use a real Database the projec includes now a folder named Entities**
-To allow the use of a real DB we will inclue classes that interact with the database, those classes are called *Entities*. In this project you will find the entity *Account* under the folder *Entities*
+To allow the use of a real DB we will include classes that interact with the database, those classes are called *Entities*. In this project you will find the entity *Account* under the folder *Entities*
 
 **Installing MondoDB Driver**
 
-To install the MondoDB driver Use te follow command in the folder where hte csproj file is located.
+To install the MondoDB driver Use te following command in the folder where the csproj file is located.
 ``` dotnet add package MongoDB.Driver ```
 
 **Run a MondoDB**
