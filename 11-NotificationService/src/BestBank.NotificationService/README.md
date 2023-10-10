@@ -6,13 +6,16 @@ For that the project must create a class that implements the IConsumer interface
 
 Then register the MassTransit package in the ```program.cs``` but in this case the line ```x.AddConsumers(typeof(Program).Assembly);``` allow to start listening for messages.
 
-```
+```C#
 builder.Services.AddMassTransit( x=>
 {
-    x.AddConsumers(typeof(Program).Assembly);
+    x.AddConsumers(Assembly.GetEntryAssembly());
     x.UsingRabbitMq((context,configurator) =>
     {
         configurator.Host("127.0.0.1");
+        configurator.ConfigureEndpoints(context, new KebabCaseEndpointNameFormatter("Testing",false));
     });
 });
+
 ```
+Then you need to create a class that will be the consumer of the message. This class must implemente the IConsumer interface.
