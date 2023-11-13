@@ -28,6 +28,13 @@ You can run the database in many ways, in your local environment, on the cloud o
 ``` powershell 
 docker run -d --rm --name mongo -p 27017:27017 -v mongodbcontainerdata:/data/db mongo
 ```
+**Important**
+
+If you're running the docker engine on Windows, change the volume path in the previous command
+
+``` powershell 
+docker run -d --rm --name mongo -p 27017:27017 -v mongodbcontainerdata:c:\data\db mongo
+```
 
 **Create an Extension to convert an Entity.Account in an AccountInfo object**
 You will find the file ```Extension.cs``` in the main folder
