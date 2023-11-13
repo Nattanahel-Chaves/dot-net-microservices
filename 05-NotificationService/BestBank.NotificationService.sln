@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BestBank.NotificationService", "BestBank.NotificationService.csproj", "{9323DC0B-5A15-4378-B6DB-B1F99D66778D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9323DC0B-5A15-4378-B6DB-B1F99D66778D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9323DC0B-5A15-4378-B6DB-B1F99D66778D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9323DC0B-5A15-4378-B6DB-B1F99D66778D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9323DC0B-5A15-4378-B6DB-B1F99D66778D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E2D2D7AC-2081-4CC4-A1F9-F9BE73E92A5F}
+	EndGlobalSection
+EndGlobal
