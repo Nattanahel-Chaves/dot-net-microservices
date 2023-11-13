@@ -1,7 +1,7 @@
 using BestBank.AccountService.dtos;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BestBank.Account;
+namespace BestBank.AccountService;
 
 [ApiController]
 [Route("api")]

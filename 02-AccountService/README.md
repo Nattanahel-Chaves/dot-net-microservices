@@ -11,7 +11,7 @@ If you want to follow the tutorial, you need to
 ``` powershell
 dotnet new webapi -n myprojectname
 ```
-2. Delete the ```WeatherForecastController.cs``` file created by default.
+2. Delete the ```WeatherForecastController.cs``` and ```WeatherForecast.cs``` files created by default.
 3. Create a new Controller called ```AccountController.cs``` inside the ```Controllers``` folder.
 4. Create a new folder called ```dtos```
 5. Add 3 records to the new folder, ```AccounInfo.cs```, ```CreateAccount.cs``` and ```UpdateAccount.cs```
