@@ -5,4 +5,6 @@ container. Because the fictional Bank System includes more than one service, eac
 
 **To run the docker compose use the following commmand**
 
-```docker-compose up```
+``` powershell
+docker-compose up
+```
