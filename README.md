@@ -11,16 +11,16 @@ The first microservices is the Account Management, and the second one is the Not
 Each folder in the repository contains only the code for one of the microservices, in a different stage of development. For instance, the folder 02-Account Service is the first version of the service, while the 09-Account Service is the final version of the same service. Inside each project the README file will gide you about the commands and tasks to be completed.
 
 
-- [The most basic microservice in .Net](https://github.com/Nattanahel-Chaves/dot-net-microservices/tree/main/01-Basic/src/01-basic#readme) 
-- [Account Management Service with in memory DB.](https://github.com/Nattanahel-Chaves/dot-net-microservices/tree/main/02-AccountService/src/BestBank.AccountService#readme)
-- [Account Management Service using MongoDB.](https://github.com/Nattanahel-Chaves/dot-net-microservices/tree/main/03-AccoutService/src/BestBank.AccountService#readme)
-- [Docker-Compose to start MongoDB](https://github.com/Nattanahel-Chaves/dot-net-microservices/blob/main/04-Infrastructure/README.MD)
-- [Notification Service with in memory DB](https://github.com/Nattanahel-Chaves/dot-net-microservices/blob/main/05-NotificationService/src/BestBank.NotificationService/README.MD)
-- [Notification Service with PostgreSQL and Entity Framework.](https://github.com/Nattanahel-Chaves/dot-net-microservices/blob/main/06-NotificationService/src/BestBank.NotificationService/README.md)
-- [Docker-Compose to start MongoDB and PostgreSQL](https://github.com/Nattanahel-Chaves/dot-net-microservices/blob/main/07-Infrastructure/README.md)
-- [Account Management Service invoking Notification Service.](https://github.com/Nattanahel-Chaves/dot-net-microservices/blob/main/08-AccoutService/src/BestBank.AccountService/README.md)
-- [Account Management Service producing and sending messages to RabbitMQ.](https://github.com/Nattanahel-Chaves/dot-net-microservices/blob/main/09-AccoutService/src/BestBank.AccountService/README.md)
-- [Docker-Compose to start MongoDB, PostgreSQL and RabbitMQ.](https://github.com/Nattanahel-Chaves/dot-net-microservices/blob/main/10-Infrastructure/README.md)
-- [Notification Service consumming messages from RabbitMQ.](https://github.com/Nattanahel-Chaves/dot-net-microservices/tree/main/11-NotificationService/src/BestBank.NotificationService#readme)
-
+- [The most basic microservice in .Net](https://github.com/Nattanahel-Chaves/dot-net-microservices/tree/main/01-Basic#readme) 
+- [Account Management Service with in memory DB.](https://github.com/Nattanahel-Chaves/dot-net-microservices/tree/main/02-AccountService#readme)
+- [Account Management Service using MongoDB.](https://github.com/Nattanahel-Chaves/dot-net-microservices/tree/main/03-AccountService#readme)
+- [Docker-Compose to start MongoDB](https://github.com/Nattanahel-Chaves/dot-net-microservices/tree/main/04-Infrastructure#readme)
+- [Notification Service with in memory DB](https://github.com/Nattanahel-Chaves/dot-net-microservices/tree/main/05-NotificationService#readme)
+- [Notification Service with PostgreSQL and Entity Framework.](https://github.com/Nattanahel-Chaves/dot-net-microservices/tree/main/06-NotificationService#readme)
+- [Docker-Compose to start MongoDB and PostgreSQL](https://github.com/Nattanahel-Chaves/dot-net-microservices/tree/main/07-Infrastructure#readme)
+- [Account Management Service invoking Notification Service.](https://github.com/Nattanahel-Chaves/dot-net-microservices/tree/main/08-AccountService#readme)
+- [Account Management Service producing and sending messages to RabbitMQ.](https://github.com/Nattanahel-Chaves/dot-net-microservices/tree/main/09-AccountService#readme)
+- [Docker-Compose to start MongoDB, PostgreSQL and RabbitMQ.](https://github.com/Nattanahel-Chaves/dot-net-microservices/tree/main/10-Infrastructure#readme)
+- [Notification Service consumming messages from RabbitMQ.](https://github.com/Nattanahel-Chaves/dot-net-microservices/tree/main/11-NotificationService#readme)
+- [Contracts share between services](https://github.com/Nattanahel-Chaves/dot-net-microservices/tree/main/12-Contracts#readme)
 
