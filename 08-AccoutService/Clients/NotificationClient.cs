@@ -17,18 +17,8 @@ namespace BestBank.AccountService.Clients
         {
             string apiUrl = "https://localhost:7208/";  
             //HttpResponseMessage response = await httpClient.PostAsJsonAsync(apiUrl, notification);
-            HttpResponseMessage response = await clientPolicy.WaitingRetry.ExecuteAsync( 
-                () => httpClient.PostAsJsonAsync(apiUrl, notification));
-
-            string responseBody = await response.Content.ReadAsStringAsync();
-            Console.WriteLine(responseBody);
-        }
-        public async void GetNotifications()
-        {
-            string apiUrl = "https://localhost:7208/";  
-            //HttpResponseMessage response = await httpClient.PostAsJsonAsync(apiUrl, notification);
-            HttpResponseMessage response = await clientPolicy.WaitingRetry.ExecuteAsync( 
-                () => httpClient.GetAsync(apiUrl));
+             HttpResponseMessage response = await clientPolicy.WaitingRetry.ExecuteAsync( 
+                 () => httpClient.PostAsJsonAsync(apiUrl, notification));
 
             string responseBody = await response.Content.ReadAsStringAsync();
             Console.WriteLine(responseBody);

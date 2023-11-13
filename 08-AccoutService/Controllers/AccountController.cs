@@ -10,12 +10,15 @@ namespace BestBank.AccountService;
 public class AccountController : ControllerBase
 {
     private readonly ClientPolicy clientPolicy;
+    private readonly IAccountRepository accountsRepository;
 
-    public AccountController(ClientPolicy clientPolicy)
+    public AccountController(IAccountRepository accountRepository, ClientPolicy clientPolicy)
     {
+        this.accountsRepository=accountRepository;
         this.clientPolicy=clientPolicy;
+
     }
-    private readonly AccountRepository accountsRepository = new();
+    
 
     [HttpGet]
     public async Task<IEnumerable<AccountInfo>> GetAsync()
@@ -28,7 +31,7 @@ public class AccountController : ControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult<AccountInfo>> GetByIdAsync(Guid id)
     {
-        var account= await accountsRepository.GetAsync(id);
+        var account= await accountsRepository.GetByIdAsync(id);
         if (account == null)
             return NotFound();
         else
@@ -52,7 +55,7 @@ public class AccountController : ControllerBase
     [HttpPut("{id}")]
     public async Task<IActionResult> PutAsync(Guid id,UpdateAccount updatedAccount)
     {
-        var existingAccount= await accountsRepository.GetAsync(id);
+        var existingAccount= await accountsRepository.GetByIdAsync(id);
         if (existingAccount == null)
             return NotFound();
         existingAccount.FirsName= updatedAccount.FirstName;
@@ -62,9 +65,13 @@ public class AccountController : ControllerBase
 
         var notification = new CreateNotification(id.ToString(), $"Your new balance is {existingAccount.Balance}");
         HttpClient httpClient=new HttpClient();
+        //First version (Without Polly)
+        //var notificationClient1= new NotificationClient(httpClient);
+        //notificationClient1.PushNotification(notification);
+        
+        //Second version with Polly
         var notificationClient= new NotificationClient(httpClient,clientPolicy);
-        notificationClient.GetNotifications();
-
+        notificationClient.PushNotification(notification);
         
         return NoContent();
     }

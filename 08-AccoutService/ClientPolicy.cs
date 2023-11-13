@@ -14,7 +14,7 @@ namespace BestBank.AccountService
                 res => !res.IsSuccessStatusCode).RetryAsync(5);
 
             WaitingRetry= Policy.HandleResult<HttpResponseMessage>( 
-                res => res.IsSuccessStatusCode).WaitAndRetryAsync(3, time => TimeSpan.FromSeconds(3));
+                res => !res.IsSuccessStatusCode).WaitAndRetryAsync(3, time => TimeSpan.FromSeconds(3));
         }
     }
 

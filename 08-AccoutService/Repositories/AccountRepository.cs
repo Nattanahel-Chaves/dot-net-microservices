@@ -2,7 +2,7 @@ using MongoDB.Driver;
 using System.Reflection.Metadata;
 
 namespace BestBank.AccountService.Repositories;
-    public class AccountRepository
+    public class AccountRepository: IAccountRepository
     {
         private const string collectionName="accounts";
 
@@ -21,7 +21,7 @@ namespace BestBank.AccountService.Repositories;
             return await dbCollection.Find(filterBuilder.Empty).ToListAsync();
         }
 
-        public async Task<Entities.Account> GetAsync(Guid id)
+        public async Task<Entities.Account> GetByIdAsync(Guid id)
         {
             FilterDefinition<Entities.Account> filter = filterBuilder.Eq(entity => entity.Id,id);
             return await dbCollection.Find(filter).FirstOrDefaultAsync();
