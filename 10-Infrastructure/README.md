@@ -4,6 +4,8 @@ Because the fictional Bank System includes more than one service, each one with 
 
 To run the docker compose use the following commmand
 
-```docker-compose up```
+``` powershell
+docker-compose up
+```
 
 *This version of the file includes the configuration for MongoDB, PostgreSQL and RabbitMQ*
