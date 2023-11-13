@@ -1,5 +1,5 @@
 using BestBank.Contracts;
-using BestBank.NotificationService.dtos;
+using BestBank.NotificationService.Models;
 using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;

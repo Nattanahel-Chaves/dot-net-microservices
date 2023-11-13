@@ -67,7 +67,7 @@ public class AccountController : ControllerBase
         if (existingAccount.Balance<50)
         {
             await publishEndpoint.Publish(new CreateNotification
-                (existingAccount.Id.ToString(),$"Your new balance is ${existingAccount.Balance}"));
+                (existingAccount.Id.ToString(),$"Your new balance is $ {existingAccount.Balance}"));
         }
         return NoContent();
     }

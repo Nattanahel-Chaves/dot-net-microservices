@@ -1,3 +1,4 @@
+using BestBank.NotificationService.Models;
 using Microsoft.EntityFrameworkCore;
 
 public class NotificationDbContext : DbContext
