@@ -43,7 +43,7 @@ public class AccountController : ControllerBase
     {
         var account= new Entities.Account 
         {
-            FirsName= createAccount.FirstName,
+            FirstName= createAccount.FirstName,
             LastName= createAccount.LastName,
             Balance= createAccount.Balance,
             CreatedDate= DateTimeOffset.UtcNow
@@ -58,7 +58,7 @@ public class AccountController : ControllerBase
         var existingAccount= await accountsRepository.GetByIdAsync(id);
         if (existingAccount == null)
             return NotFound();
-        existingAccount.FirsName= updatedAccount.FirstName;
+        existingAccount.FirstName= updatedAccount.FirstName;
         existingAccount.LastName=updatedAccount.LastName;
         existingAccount.Balance=updatedAccount.Amount;
         await accountsRepository.UpdateAsync(existingAccount);
