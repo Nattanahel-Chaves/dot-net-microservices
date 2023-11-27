@@ -6,6 +6,6 @@ public static class Extensions
 {
     public static AccountInfo ConverToAccountInfo(this AccountService.Entities.Account account)
     {
-        return new AccountInfo(account.Id,account.FirsName,account.LastName,account.Balance,account.CreatedDate);
+        return new AccountInfo(account.Id,account.FirstName,account.LastName,account.Balance,account.CreatedDate);
     }
 }
