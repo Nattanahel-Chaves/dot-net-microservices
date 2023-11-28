@@ -11,7 +11,7 @@ namespace BestBank.AccountService.Repositories;
 
         public AccountRepository()
         {
-            var mongoClient= new MongoClient("mongodb://localhost:27017");
+            var mongoClient= new MongoClient(Environment.GetEnvironmentVariable("MongoDBConnString"));
             var database= mongoClient.GetDatabase("accounts");
             dbCollection=database.GetCollection<Entities.Account>(collectionName);
         }

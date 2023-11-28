@@ -18,7 +18,7 @@ To communicate the Notification Service with the DB, the following code must be 
 
 ``` C#
 builder.Services.AddDbContext<NotificationDbContext>(options =>
-    options.UseNpgsql("Server=127.0.0.1;Port=5432;Database=NotificationDB;User Id=postgres;Password=Abc123*;")
+    options.UseNpgsql(Environment.GetEnvironmentVariable("PostgresConnectionString"))   
 );
 ```
 
@@ -61,3 +61,16 @@ dotnet ef database update firstmigration --project BestBank.NotificationService.
 **Important**
 
 If you're running the PostgreSQL in a docker container, you need to run the previous command before starting the application for the first time, because you need to create the database and the tables.
+
+**Use of environment variables**
+In the file ```Program.cs``` you will set the "connection string" to the PostgreSQL database, 
+
+``` C#
+options.UseNpgsql(Environment.GetEnvironmentVariable("PostgresConnectionString"))
+```
+
+Before you run your application, if you want to follow this approach, you need to create an environment variable using for example the following command. You need to replace the values in _Server_, _Port_, _Database_, _User_Id_ and _Password_ based on your own data.
+
+``` bash
+export PostgresConnectionString="Server=127.0.0.1;Port=5432;Database=NotificationDB;User Id=postgres;Password=Abc123*;"
+```

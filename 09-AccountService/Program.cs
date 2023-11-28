@@ -10,7 +10,7 @@ builder.Services.AddMassTransit( x=>
 {
     x.UsingRabbitMq((context,configurator) =>
     {
-        configurator.Host("127.0.0.1");
+        configurator.Host(Environment.GetEnvironmentVariable("RabbitMQHost"));
         configurator.ConfigureEndpoints(context, new KebabCaseEndpointNameFormatter("AccountService2",false));
     });
 });

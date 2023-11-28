@@ -15,7 +15,7 @@ builder.Services.AddMassTransit( x=>
     x.AddConsumers(typeof(Program).Assembly);
     x.UsingRabbitMq((context,configurator) =>
     {
-        configurator.Host("127.0.0.1");
+        configurator.Host(Environment.GetEnvironmentVariable("RabbitMQHost"));
         configurator.ConfigureEndpoints(context, new KebabCaseEndpointNameFormatter("AccountService2",false));
     });
 });
@@ -26,7 +26,7 @@ builder.Services.AddSwaggerGen();
 
 
 builder.Services.AddDbContext<NotificationDbContext>(options =>
-    options.UseNpgsql("Server=127.0.0.1;Port=5432;Database=NotificationDB;User Id=postgres;Password=Abc123*;")
+    options.UseNpgsql(Environment.GetEnvironmentVariable("PostgresConnectionString"))
 );
 
 
