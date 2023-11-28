@@ -38,3 +38,16 @@ docker run -d --rm --name mongo -p 27017:27017 -v mongodbcontainerdata:c:\data\d
 
 **Create an Extension to convert an Entity.Account in an AccountInfo object**
 You will find the file ```Extension.cs``` in the main folder
+
+**Use of environment variables**
+In the file ```AccountRepository.cs``` you will set the "connection string" to the MongoDB database, 
+
+``` C#
+var mongoClient= new MongoClient(Environment.GetEnvironmentVariable("MongoDBConnString"));
+```
+
+Before you run your application, if you want to follow this approach, you need to create an environment variable using for example the following command, the value localhost:27017 should be adjust based on your environment:
+
+``` bash
+export MongoDBConnString="mongodb://localhost:27017"
+```

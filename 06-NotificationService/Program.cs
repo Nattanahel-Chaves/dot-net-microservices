@@ -17,7 +17,7 @@ builder.Services.AddSwaggerGen();
 
 
 builder.Services.AddDbContext<NotificationDbContext>(options =>
-    options.UseNpgsql("Server=localhost;Port=5432;Database=NotificationDB;User Id=postgres;Password=Abc123*;")
+    options.UseNpgsql(Environment.GetEnvironmentVariable("PostgresConnectionString"))
 );
 
 

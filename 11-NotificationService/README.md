@@ -12,7 +12,7 @@ builder.Services.AddMassTransit( x=>
     x.AddConsumers(Assembly.GetEntryAssembly());
     x.UsingRabbitMq((context,configurator) =>
     {
-        configurator.Host("127.0.0.1");
+        configurator.Host(Environment.GetEnvironmentVariable("RabbitMQHost"));
         configurator.ConfigureEndpoints(context, new KebabCaseEndpointNameFormatter("Testing",false));
     });
 });

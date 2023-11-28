@@ -31,7 +31,7 @@ builder.Services.AddMassTransit( x=>
 {
     x.UsingRabbitMq((context,configurator) =>
     {
-        configurator.Host("127.0.0.1");
+        configurator.Host(Environment.GetEnvironmentVariable("RabbitMQHost"));
     });
 });
 ```
@@ -41,4 +41,11 @@ In order to test this version of the service you need to update the Notification
 
 ``` powershell
 docker run -d --rm --name rabbitmq -p 5672:5672 -p 15672:15672 -v rabbitmqdata:/var/lib/rabbitmq --hostname rabbitmq rabbitmq:management
+```
+
+***Note***
+We're setting the RabbitMQ host using an environment variable, you need to set that value before running the application using a command like this, remember to replace the value 127.0.0.1 with your current value.
+
+``` bash
+export RabbitMQHost="127.0.0.1"
 ```

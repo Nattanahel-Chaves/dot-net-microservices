@@ -13,7 +13,7 @@ To test this version you need both databases and services working at the same ti
 ``` C#
  public async void PushNotification(CreateNotification notification)
 {
-    string apiUrl = "https://localhost:7208/";  
+    string ?apiUrl = Environment.GetEnvironmentVariable("NotificationServiceEndpoint");  
     HttpResponseMessage response = await httpClient.PostAsJsonAsync(apiUrl, notification);
 
     string responseBody = await response.Content.ReadAsStringAsync();
@@ -29,7 +29,7 @@ Because this kind of communication can result in failures, there are techniques 
 dotnet add package Microsoft.Extensions.Http.Polly
 ```
 
-For that the app implements a Policy, in this project that policy is in the ```ClientPolicy.cs``` file. This policy must be registered in the ```program.cs``` file using this code.
+For that the app implements a Policy, in this project that policy is in the ```ClientPolicy.cs``` file. This policy must be registered in the ```Program.cs``` file using this code.
 
 ``` C#
 builder.Services.AddSingleton<ClientPolicy>( new ClientPolicy());
@@ -39,7 +39,7 @@ Finally, the invocation to the Notification Service must be wrapped with the pol
 ``` C#
 public async void PushNotification(CreateNotification notification)
 {
-    string apiUrl = "https://localhost:7208/";  
+    string ?apiUrl = Environment.GetEnvironmentVariable("NotificationServiceEndpoint"); 
         HttpResponseMessage response = await clientPolicy.WaitingRetry.ExecuteAsync( 
                 () => httpClient.GetAsync(apiUrl));
 
@@ -53,10 +53,12 @@ Instead of this:
 ``` C#
 public async void PushNotification(CreateNotification notification)
 {
-    string apiUrl = "https://localhost:7208/";  
+    string ?apiUrl = Environment.GetEnvironmentVariable("NotificationServiceEndpoint");  
     HttpResponseMessage response = await httpClient.PostAsJsonAsync(apiUrl, notification);
 
     string responseBody = await response.Content.ReadAsStringAsync();
     Console.WriteLine(responseBody);
 }
 ```
+***Note***
+We're setting the URL of the API of the notification service with an environment variable, you need to set that value before running the application.

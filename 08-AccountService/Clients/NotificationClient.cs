@@ -15,7 +15,7 @@ namespace BestBank.AccountService.Clients
 
         public async void PushNotification(CreateNotification notification)
         {
-            string apiUrl = "https://localhost:7208/";  
+            string ?apiUrl = Environment.GetEnvironmentVariable("NotificationServiceEndpoint");  
             //HttpResponseMessage response = await httpClient.PostAsJsonAsync(apiUrl, notification);
              HttpResponseMessage response = await clientPolicy.WaitingRetry.ExecuteAsync( 
                  () => httpClient.PostAsJsonAsync(apiUrl, notification));
