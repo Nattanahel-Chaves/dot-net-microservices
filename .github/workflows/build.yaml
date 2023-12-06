@@ -31,6 +31,7 @@ jobs:
 
       - name: Restore project dependencies
         run: dotnet restore BestBank.AccountService.csproj
+        working-directory: 09-AccountService
 
       - name: Build and Publish Docker Image
         run: dotnet publish --os linux -c ${{ env.buildConfiguration }} -p PublishProfile=DefaultContainer -p ContainerRepository=${{ 'env.AccountService' }} -p ContainerImageTags='"${{ env.dockerImageTag }}"'
