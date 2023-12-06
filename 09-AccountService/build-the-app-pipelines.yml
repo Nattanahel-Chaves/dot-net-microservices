@@ -1,0 +1,35 @@
+trigger:
+- doker
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  version: '7.x'
+  buildConfiguration: 'Release'
+  dockerImageTag: '$(Build.BuildId)'
+
+steps:
+- task: UseDotNet@2
+  displayName: 'Step #1. ============ Use .NET SDK $(version) ============'
+  inputs:
+    packageType: sdk
+    version: $(version)
+
+- script: 'echo "$(Build.DefinitionName), $(Build.BuildId), $(Build.BuildNumber)"'
+  displayName: 'Step #2. ============ Write build info ============'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Step #3 ============ Restore project dependencies ============'
+  inputs:
+    command: 'restore'
+    projects: 'BestBank.AccountService.csproj'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Step #4 ============ Build the project & Generate Docker Image ============'
+  inputs:
+    command: 'publish'
+    projects: 'BestBank.AccountService.csproj'
+    arguments: '--configuration --os linux $(buildConfiguration) p PublishProfile=DefaultContainer -p ContainerImageTags= "$(dockerImageTag)"'
+
+
