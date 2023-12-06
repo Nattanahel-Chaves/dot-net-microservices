@@ -33,7 +33,7 @@ jobs:
         run: dotnet restore BestBank.AccountService.csproj
 
       - name: Build and Publish Docker Image
-        run: dotnet publish BestBank.AccountService.csproj --configuration ${{ env.buildConfiguration }} p PublishProfile=DefaultContainer -p ContainerRepository ${{ 'env.AccountService' }} -p ContainerImageTags= "${{ env.dockerImageTag }}"
+        run: dotnet publish --configuration ${{ env.buildConfiguration }} p PublishProfile=DefaultContainer -p ContainerRepository ${{ 'env.AccountService' }} -p ContainerImageTags= "${{ env.dockerImageTag }}"
         working-directory: 09-AccountService
       
       - name: Write Docker Image Info
