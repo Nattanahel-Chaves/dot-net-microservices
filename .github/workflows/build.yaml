@@ -1,0 +1,50 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - docker
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      version: '7.x'
+      buildConfiguration: 'Release'
+      dockerImageTag: ${{ github.run_number }}
+      acrName: 'your-acr-name'
+      azureServicePrincipal: ${{ secrets.AZURE_SERVICE_PRINCIPAL }}
+      dockerImageName: 'AccountService'
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ env.version }}
+
+      - name: Write Build Info
+        run: echo "${{ github.repository }}, ${{ github.run_id }}, ${{ github.run_number }}"
+
+      - name: Restore project dependencies
+        run: dotnet restore BestBank.AccountService.csproj
+
+      - name: Build and Publish Docker Image
+        run: dotnet publish BestBank.AccountService.csproj --configuration ${{ env.buildConfiguration }} p PublishProfile=DefaultContainer -p ContainerRepository ${{ 'env.AccountService' }} -p ContainerImageTags= "${{ env.dockerImageTag }}"
+
+      - name: Write Docker Image Info
+        run: docker images
+        
+      #- name: Login to Azure Container Registry
+      #  uses: azure/docker-login@v1
+      #  with:
+      #    login-server: ${{ env.acrName }}.azurecr.io
+      #    username: ${{ secrets.ACR_USERNAME }}
+      #    password: ${{ secrets.ACR_PASSWORD }}
+
+      #- name: Push Docker Image to Azure Container Registry
+      #  run: |
+      #    docker push ${{ env.acrName }}.azurecr.io/${{ env.dockerImageName }}:${{ env.dockerImageTag }}
