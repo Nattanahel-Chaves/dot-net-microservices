@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      version: '7.x'
+      version: '7.0.x'
       buildConfiguration: 'Release'
       dockerImageTag: ${{ github.run_number }}
       acrName: 'your-acr-name'
