@@ -24,7 +24,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: ${{ env.version }}
+          dotnet-version: 7.0.x
 
       - name: Write Build Info
         run: echo "${{ github.repository }}, ${{ github.run_id }}, ${{ github.run_number }}"
