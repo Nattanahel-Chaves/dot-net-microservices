@@ -1,0 +1,50 @@
+name: DORA KPI Report
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+jobs:
+  dora-kpi:
+    name: Compute DORA KPIs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Compute DORA metrics
+        shell: bash
+        continue-on-error: true
+        run: |
+          echo "### DORA KPI Report"
+          echo
+          echo "Repository: $GITHUB_REPOSITORY"
+          echo "Event: $GITHUB_EVENT_NAME"
+          echo
+          # Use 30-day history for metrics where possible.
+          since="30 days ago"
+          total_commits=$(git log --since="$since" --pretty=oneline 2>/dev/null | wc -l)
+          deploy_commits=$(git log --since="$since" --pretty=oneline --grep='deploy\|release\|production\|prod\|published\|ship\|release' 2>/dev/null | wc -l)
+          failure_commits=$(git log --since="$since" --pretty=oneline --grep='rollback\|hotfix\|bugfix\|incident\|outage\|downtime\|restore\|fix.*production\|production.*fix' 2>/dev/null | wc -l)
+
+          if [[ "$total_commits" -eq 0 ]]; then
+            echo "Deployment frequency: N/A (no commits in the last 30 days)"
+            echo "Lead time for changes: N/A"
+            echo "Change failure rate: N/A"
+            echo "Time to restore service: N/A"
+          else
+            frequency="$(awk "BEGIN { printf \"%.2f\", $deploy_commits / 4.0 }" 2>/dev/null)"
+            failure_rate="$(awk "BEGIN { printf \"%.2f%%\", ($failure_commits / $total_commits) * 100 }" 2>/dev/null)"
+            echo "Deployment frequency (approx.): $deploy_commits deploy-like commits in the last 30 days (~$frequency deployments/week)"
+            echo "Lead time for changes: N/A"
+            echo "Change failure rate: $failure_rate ($failure_commits of $total_commits commits)"
+            echo "Time to restore service: N/A"
+          fi
+
+      - name: Always succeed
+        if: always()
+        run: |
+          echo "This workflow is configured to report DORA KPIs without failing, even if repository data is incomplete."
