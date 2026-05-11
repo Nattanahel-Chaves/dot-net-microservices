@@ -44,7 +44,18 @@ jobs:
             echo "Time to restore service: N/A"
           fi
 
+      - name: Introduce random failure
+        shell: bash
+        run: |
+          echo "Deciding whether to fail randomly..."
+          if [[ $((RANDOM % 2)) -eq 0 ]]; then
+            echo "Random failure triggered."
+            exit 1
+          else
+            echo "No failure this time."
+          fi
+
       - name: Always succeed
         if: always()
         run: |
-          echo "This workflow is configured to report DORA KPIs without failing, even if repository data is incomplete."
+          echo "This workflow is configured to report DORA KPIs and may fail randomly for testing purposes."
